@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { persistCombineReducers, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { rtkApi } from "../api/baseApi";
-import { usersReducer } from "../modules/users/components/usersSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -17,7 +16,7 @@ const reducer = persistCombineReducers(
   },
   {
     [rtkApi.reducerPath]: rtkApi.reducer,
-    users: usersReducer,
+    //users: usersReducer,
   }
 );
 

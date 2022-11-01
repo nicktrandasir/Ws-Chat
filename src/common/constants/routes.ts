@@ -1,6 +1,7 @@
 export const routes = {
   main: "/",
-  users: "/users",
-  posts: "/posts",
-  addresses: "/adr",
+  chat: "/chat",
+  history: "/history",
+  cabinet: "/cabinet",
+  config: "/config",
 };

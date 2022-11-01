@@ -3,10 +3,10 @@ import { Layout } from "../../common/components/layout";
 
 interface IProps {}
 
-export const Addresses = (props: IProps) => {
+export const Config = (props: IProps) => {
   return (
     <Layout>
-      <p>Addresses page </p>
+      <p>Config page </p>
     </Layout>
   );
 };

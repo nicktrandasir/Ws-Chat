@@ -1,13 +1,12 @@
-import { IUser } from "../modules/users/interfaces/IUser";
 import { rtkApi } from "./baseApi";
 
 export const usersApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
-    getListUsers: build.query<IUser[], number>({
+    getListUsers: build.query({
       query: (page) => ({ url: `https://jsonplaceholder.typicode.com/users?page=${page}` }),
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetListUsersQuery,  } = usersApi;
+export const { useGetListUsersQuery } = usersApi;
