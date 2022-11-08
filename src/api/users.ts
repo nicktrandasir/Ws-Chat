@@ -10,11 +10,19 @@ export const usersApi = apiWithTag.injectEndpoints({
       providesTags: ["Users"],
     }),
     addUser: build.mutation({
+      query: (data) => ({
+        url: "/users",
+        method: "post",
+        data,
+      }),
+      invalidatesTags: ["Users"],
+    }),
+    deleteUser: build.mutation({
       query: (data) => {
+        console.log("id--->", data);
         return {
-          url: "/users",
-          method: "post",
-          data,
+          url: `/users?id=${data}`,
+          method: "delete",
         };
       },
       invalidatesTags: ["Users"],
@@ -23,4 +31,4 @@ export const usersApi = apiWithTag.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useGetListUsersQuery, useAddUserMutation } = usersApi;
+export const { useGetListUsersQuery, useAddUserMutation, useDeleteUserMutation } = usersApi;

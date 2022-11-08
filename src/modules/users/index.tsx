@@ -1,5 +1,5 @@
 import React from "react";
-import { useAddUserMutation, useGetListUsersQuery } from "../../api/users";
+import { useAddUserMutation, useDeleteUserMutation, useGetListUsersQuery } from "../../api/users";
 import { Layout } from "../../common/components/layout";
 import { IUser } from "./components/IUser";
 import { useController, useForm } from "react-hook-form";
@@ -8,8 +8,9 @@ interface IProps {}
 
 export const Users = (props: IProps) => {
   const { data, isLoading } = useGetListUsersQuery([]);
-
   const [addUser] = useAddUserMutation();
+  const [deleteUser] = useDeleteUserMutation();
+
   const { control, handleSubmit, resetField } = useForm({ mode: "onChange" });
   const { field: name } = useController({ control, name: "name", defaultValue: "" });
   const onSubmit = async () => {
@@ -23,6 +24,10 @@ export const Users = (props: IProps) => {
     );
     resetField("name");
   };
+  const onDelete = async (id: string) => {
+    console.log("id ------->", id);
+    await deleteUser(id);
+  };
 
   return (
     <Layout>
@@ -34,7 +39,12 @@ export const Users = (props: IProps) => {
           <div>
             {data?.map((item: IUser) => (
               <p className="flex flex-row gap-8" key={item.id}>
-                <span>{item.name}</span>
+                <span className="flex cursor-pointer">
+                  {item.name}{" "}
+                  <span className="bg-red-500 rounded-xl px-2" onClick={() => onDelete(String(item?._id))}>
+                    -
+                  </span>
+                </span>
               </p>
             ))}
           </div>
