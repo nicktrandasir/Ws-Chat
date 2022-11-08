@@ -1,6 +1,9 @@
 import { rtkApi } from "./baseApi";
 
-export const usersApi = rtkApi.injectEndpoints({
+//Добавление тега для автообновления
+const apiWithTag = rtkApi.enhanceEndpoints({ addTagTypes: ["Users"] });
+
+export const usersApi = apiWithTag.injectEndpoints({
   endpoints: (build) => ({
     getListUsers: build.query({
       query: () => ({ url: "/users" }),

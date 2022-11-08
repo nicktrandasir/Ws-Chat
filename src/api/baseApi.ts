@@ -68,7 +68,6 @@ export const axiosBaseQuery: AxiosBaseQuery =
 
 export const rtkApi = createApi({
   baseQuery: axiosBaseQuery({ baseUrl }),
-  tagTypes: ["Users"],
   endpoints: () => ({}),
 });
 
