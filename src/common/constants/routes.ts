@@ -1,7 +1,7 @@
 export const routes = {
   main: "/",
   chat: "/chat",
-  history: "/history",
+  users: "/users",
   cabinet: "/cabinet",
   config: "/config",
 };

@@ -5,7 +5,7 @@ import { routes } from "./common/constants/routes";
 import { Chat } from "./modules/chat";
 import { Cabinet } from "./modules/cabinet";
 import { Config } from "./modules/config";
-import { History } from "./modules/history";
+import { Users } from "./modules/users";
 
 export const App = () => {
   return (
@@ -13,7 +13,7 @@ export const App = () => {
       <Routes>
         <Route path={routes.main} element={<Main />} />
         <Route path={routes.chat} element={<Chat />} />
-        <Route path={routes.history} element={<History />} />
+        <Route path={routes.users} element={<Users />} />
         <Route path={routes.cabinet} element={<Cabinet />} />
         <Route path={routes.config} element={<Config />} />
       </Routes>

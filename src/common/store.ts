@@ -4,6 +4,7 @@ import { persistCombineReducers, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { rtkApi } from "../api/baseApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { usersReducer } from "../modules/users/components/usersSlice";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -16,7 +17,7 @@ const reducer = persistCombineReducers(
   },
   {
     [rtkApi.reducerPath]: rtkApi.reducer,
-    //users: usersReducer,
+    users: usersReducer,
   }
 );
 

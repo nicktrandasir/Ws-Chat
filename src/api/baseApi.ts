@@ -1,8 +1,10 @@
 import { BaseQueryFn } from "@reduxjs/toolkit/query";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import Axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { isClient, isDev } from "../common/constants/variables";
+
+const baseUrl = "http://localhost:3300";
 
 type HttpMethod = "get" | "post" | "put" | "delete";
 type Params = [string, (unknown | AxiosRequestConfig)?, AxiosRequestConfig?];
@@ -64,7 +66,11 @@ export const axiosBaseQuery: AxiosBaseQuery =
   ({ url, method = "get", data, params }) =>
     fetch(baseUrl + url, method, { data, params });
 
-export const rtkApi = createApi({ baseQuery: axiosBaseQuery(), endpoints: () => ({}) });
+export const rtkApi = createApi({
+  baseQuery: axiosBaseQuery({ baseUrl }),
+  tagTypes: ["Users"],
+  endpoints: () => ({}),
+});
 
 export const mock = new MockAdapter(axios, { onNoMatch: "passthrough" });
 
